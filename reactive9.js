@@ -20,8 +20,9 @@ function reactive(target){
 function createReactiveObject(target){
     if(!isObject(target)) return
 
-    if(toProxy.has(target)) return toProxy.get(target)
-    if(toRaw.has(target)) return target
+    const ob = toProxy.get(target)
+    if(toProxy.has(target)) return ob
+    if(toRaw.has(ob)) return target
 
     let baseHandler = {
         get(target, key, receiver){

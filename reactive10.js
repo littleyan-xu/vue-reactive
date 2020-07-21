@@ -26,7 +26,7 @@ function createReactiveObject(target) {
 
     let baseHandler = {
         get(target, key, receiver) {
-            console.log(key, '获取');
+           // console.log(key, '获取');
             track(target, key) // 收集依赖
             let result = Reflect.get(target, key, receiver)
             if (isObject(result)) {
@@ -40,11 +40,11 @@ function createReactiveObject(target) {
             let oldValue = target[key]
             let result = Reflect.set(target, key, value, receiver)
             if (!hasOwnKey(target, key)) {
-                console.log(key, '新增设置');
+               // console.log(key, '新增设置');
                 trigger(target, key) // 触发更新
             }
             else if (oldValue !== value) {
-                console.log(key, '更改设置');
+               // console.log(key, '更改设置');
                 trigger(target, key) // 触发更新
             }
             return result

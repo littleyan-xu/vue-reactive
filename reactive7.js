@@ -206,4 +206,5 @@ new Vue(data) // 模拟Vue实例化，入口
 
 data.price = 20 // 触发更新
 
-data.list.push(1, 2, 3) // 触发更新
+//data.list.push(1, 2, 3) // 触发更新
+data.list = [1,2,3]
